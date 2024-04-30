@@ -43,14 +43,14 @@ export const useFetch = ( url) => {
                 error: null,
             })
             return;
-        }
+    }
 
-        setLoadingState(); 
+    setLoadingState(); 
 
-        const resp = await fetch( url );
+    const resp = await fetch( url );
 
-        //sleep
-        await new Promise( resolve => setTimeout( resolve, 1500 ) ); 
+    //sleep
+    await new Promise( resolve => setTimeout( resolve, 1500 ) ); 
 
         if ( !resp.ok ) {
             setState({
@@ -72,20 +72,15 @@ export const useFetch = ( url) => {
             hasError: false,
             error: null,
         })
-
-        // console.log({data});
-
+        
         //manejo del cache
         localCache[url] = data;
-        // console.log(localCache);
-
+        
     }
-
 
     return {
         data: state.data,
         isLoading: state.isLoading,
-        hasError: state.hasError,
-
+        hasError: state.hasError
     }
 }
